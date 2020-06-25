@@ -51,7 +51,7 @@ public class AccountDAO {
     public void update(Account acc) {
         String sql = "update users set password=? where username like ?";
         Object[] param = {acc.getPassword(), acc.getUsername()};
-        int[] types = {Types.NVARCHAR, Types.VARCHAR, Types.NVARCHAR};
+        int[] types = {Types.NVARCHAR, Types.NVARCHAR};
         int i = jdbc.update(sql, param, types);
         System.out.println("Update Row: " + i);
     }

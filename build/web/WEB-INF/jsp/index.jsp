@@ -39,7 +39,7 @@
                         <!--Menu-->
                         <div class="container">
                             <ul class="nav navbar-nav">
-                                <li><a href="" style="color: white"><span class="glyphicon glyphicon-home"></span> Trang chủ</a></li>
+                                <li><a href="index.htm" style="color: white"><span class="glyphicon glyphicon-home"></span> Trang chủ</a></li>
                                 <li><a href="" style="color: white"><span class="glyphicon glyphicon-th-list"></span> Giới thiệu</a></li>
                                 <li><a href="" style="color: white"><span class="glyphicon glyphicon-earphone"></span> Liên hệ</a></li>
                                 <li><a href="" style="color: white"><span class="glyphicon glyphicon-envelope"></span> Góp ý</a></li>
@@ -53,15 +53,30 @@
                                         <li class="divider"></li>
                                         <li><a href="">Đăng xuất</a></li>
                                         <li><a href="">Đổi mật khẩu</a></li>
-                                        <li><a href="">Cập nhật hồ sơ</a></li>
+                                        <li><a href="info.htm">Cập nhật hồ sơ</a></li>
                                         <li class="divider"></li>
                                         <li><a href="">Đơn hàng</a></li>
                                         <li><a href="">Hàng đã mua</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                            <!--Search-->
+                            <form class="navbar-form navbar-left" method="post " action="/Product/Search">
+                                <div class="form-group">
+                                    <input placeholder="Search" name="Search" data-validate="Enter Products" class="form-control " />
+                                </div>
+                            </form>
+                            <!--/Search-->
 
+                            <!--CartInfo-->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href=""><span class="glyphicon glyphicon-briefcase"></span> Cart</a></li>
+                                <li><a href=""></a></li>
+                                <li><a href=""></a></li>
+                                <li><a href=""></a></li>
+                            </ul>
+                            <!--/CartInfo-->
+                        </div>
                         <!--Menu-->
                     </div>
                 </div>
@@ -74,36 +89,9 @@
                 </article>
 
                 <aside class="col-sm-3 ">
-                    <!--CartInfo-->
-                    <div class="poly-cart ">
-                        <div class="panel panel-default ">
-                            <div class="panel-body ">
-                                <img class="col-sm-5 " src="images/shoppingcart.gif " />
-                                <ul class="col-sm-7 ">
-                                    <li>100 items</li>
-                                    <li>$ 56.8</li>
-                                    <li><a href=" ">View Cart</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/CartInfo-->
-
-                    <!--Search-->
-                    <div class="nn-cart ">
-                        <div class="panel panel-default ">
-                            <div class="panel-body ">
-                                <form method="post " action="/Product/Search ">
-                                    <input placeholder="Keywords " name="Keywords " class="form-control " />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Search-->
-
                     <!--Category-->
                     <div class="panel panel-default ">
-                        <div class="panel-heading ">
+                        <div class="panel-heading " style="background-color: orange; opacity: 80%">
                             <span class="glyphicon glyphicon-th-list "></span>
                             <strong>Chủng loại</strong>
                         </div>
@@ -117,7 +105,7 @@
                     <!--Supplier-->
                     <div class="panel panel-default ">
 
-                        <div class="panel-heading ">
+                        <div class="panel-heading " style="background-color: orange; opacity: 80%">
                             <span class="glyphicon glyphicon-list-alt "></span>
                             <strong>Nhà cung cấp</strong>
                         </div>
@@ -130,7 +118,7 @@
 
                     <!--Special-->
                     <div class="panel panel-default ">
-                        <div class="panel-heading ">
+                        <div class="panel-heading " style="background-color: orange; opacity: 80%">
                             <span class="glyphicon glyphicon-star-empty "></span>
                             <strong>Hàng đặc biệt</strong>
                         </div>
@@ -150,7 +138,7 @@
 
             <footer class="panel panel-default">
                 <div class="panel-heading text-center " id="color">
-                    <p>FPT Polytechnic &copy; 2017. All rights reserved.</p>
+                    <p>Made By Kent &copy; 2020. All rights reserved.</p>
                 </div>
             </footer>
         </div>

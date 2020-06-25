@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : Mar 5, 2020, 9:03:51 AM
-    Author     : root
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
