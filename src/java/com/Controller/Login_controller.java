@@ -25,7 +25,7 @@ public class Login_controller {
     @Autowired
     public AccountDAO dao;
     
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(ModelMap model) {
         model.addAttribute("user", new Account());
         return "login";
