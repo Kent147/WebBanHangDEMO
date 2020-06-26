@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,11 +49,11 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"><span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="login.htm">Đăng nhập</a></li>
-                                        <li><a href="">Quên mật khẩu</a></li>
-                                        <li><a href="">Đăng ký thành viên</a></li>
+                                        <li><a href="password.htm">Quên mật khẩu</a></li>
+                                        <li><a href="register.htm">Đăng ký thành viên</a></li>
                                         <li class="divider"></li>
                                         <li><a href="">Đăng xuất</a></li>
-                                        <li><a href="">Đổi mật khẩu</a></li>
+                                        <li><a href="password.htm">Đổi mật khẩu</a></li>
                                         <li><a href="info.htm">Cập nhật hồ sơ</a></li>
                                         <li class="divider"></li>
                                         <li><a href="">Đơn hàng</a></li>
@@ -85,7 +86,16 @@
 
                 <article class="col-sm-9">
                     <!--Nội dung trang web-->
-
+                    <c:forEach var="pd" items="${products}">
+                        <div ng-controller="myctrl">
+                            <div class="col-md-6">
+                                <div class="panel panel-default text-center">
+                                    <div class="panel-body"><img style="height: 150px; max-width:95%;" src="images/products/${pd.img}"></div>
+                                    <div class="panel-heading"><p>${pd.name_pd}<p><p>Giá : ${pd.cost_pd} VND<p> <br> <a href="?deleteProducts&id=${pd.id_pd}" class="button"> Delete</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </article>
 
                 <aside class="col-sm-3 ">
@@ -93,11 +103,31 @@
                     <div class="panel panel-default ">
                         <div class="panel-heading " style="background-color: orange; opacity: 80%">
                             <span class="glyphicon glyphicon-th-list "></span>
-                            <strong>Chủng loại</strong>
+                            <strong>Thêm Sản Phẩm</strong>
                         </div>
 
-                        <div class="list-group ">
-                            <a href="# " class="list-group-item ">Điện thoại di động</a>
+                        <div class="panel panel-body">
+                            <form class="form-group" action="index.htm" modelAttribute="pd" method="POST">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="name_pd" placeholder="Name Products">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="cost_pd" placeholder="Cost Products">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="info" placeholder="Info Products">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="id_pd" placeholder="Id">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="file" name="img">
+                                </div>
+                                ${loi}
+                                <div class="container-login100-form-btn">
+                                    <input type="submit" name="insertProducts" value="Save" class="btn btn-info" id="color" style="width: 100%"/>
+                                </div>     
+                            </form>
                         </div>
                     </div>
                     <!--/Category-->

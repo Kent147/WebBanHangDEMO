@@ -61,8 +61,8 @@ public class UserDAO {
         jdbc.update(sql, username);
     }
 
-    public List<User> getByName(String username) {
-        String sql = "SELECT * FROM userdetails WHERE fullname LIKE ?";
-        return jdbc.query(sql, getRowMapper(), "%" + username + "%");
+    public List<User> getById(String id) {
+        String sql = "SELECT * FROM userdetails WHERE id_user LIKE ?";
+        return jdbc.query(sql, getRowMapper(), "%" + id + "%");
     }
 }

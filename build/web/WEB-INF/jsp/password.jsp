@@ -86,41 +86,16 @@
 
                 <article class="col-sm-9">
                     <!--Nội dung trang web-->
-                        <form class="form-group" action="info.htm" modelAttribute="user" method="POST">
+                        <form class="form-group" action="password.htm" modelAttribute="user" method="POST">
                             <div class="panel panel-default">
-                                <label for="upload-avatar" style="cursor: pointer; position: absolute; height: 100%;"> 
-                                    <img src="images/bg-01.jpg${user_image}" style="opacity: 50%;" width="99%" height="100%"/> 
-                                </label>
-                                <input type="file" name="user_img" id="upload-avatar" style="opacity: 0; position: absolute; z-index: -1;"/>
-                            </div>
-                            <div class="panel panel-heading" style="height: 150px" >
-                                <label for="upload-avatar" style="cursor: pointer; position: absolute; height: 100%"> 
-                                    <img src="images/avatar.png${user_image}" style="border-radius: 50%;" height="60%"/>
-                                </label>
-                                <input type="file" name="user_img" id="upload-avatar" style="opacity: 0; position: absolute; z-index: -1;"/>
-                            </div>
-                            <span class="text-center" style="position: absolute; color: black; left: 180px; top: 80px; font-size: 40px">
-                                <c:out value="${users}"/> username
-                            </span>
-                            <br>
-                            <span class="text-center" style="position: absolute; color: #78281F; left: 180px; top: 125px; font-size: 20px">
-                                ID: ${username} 12312
-                            </span>
                             <div class="panel panel-body" style="position: absolute; width: 100%">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="user_fullname" placeholder="Full Name" value="${user_fullname}">
+                                    <input class="form-control" type="password" name="password" placeholder="Password" value="${password}">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="user_email" placeholder="Email" value="${user_email}">
+                                    <input class="form-control" type="password" name="repass" placeholder="Re-password">
                                 </div>
                                 ${loi}
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="user_phone" placeholder="Phone Number" value="${user_phone}">
-                                </div>
-                                ${loi}
-                                <div class="form-group">
-                                    <input class="form-control" type=text" name="user_address" placeholder="Address" value="${user_address}">
-                                </div>
                                 <div class="container-login100-form-btn">
                                     <input type="submit" value="Save" class="btn btn-info" id="color" style="width: 100%"/>
                                 </div>

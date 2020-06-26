@@ -5,8 +5,8 @@
  */
 package com.Controller;
 
-import com.DAO.AccountDAO;
-import com.Model.Account;
+import com.DAO.ProductDAO;
+import com.Model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,37 +20,37 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author root
  */
 @Controller
-public class Account_controller {
+public class Product_controller {
 
     @Autowired
-    private AccountDAO dao;
+    private ProductDAO dao;
 
 //    1. load_data
     public String initiate(ModelMap model) {
-        model.addAttribute("user", new Account());
+        model.addAttribute("product", new Product());
+        model.addAttribute("products", dao.getAll());
         return "index";
     }
 
     //2. insert
-    @RequestMapping(value = "index", params = "insertAccount", method = RequestMethod.POST)
-    public String insert(@ModelAttribute("acc") Account acc, ModelMap model) {
+    @RequestMapping(value = "index", params = "insertProducts", method = RequestMethod.POST)
+    public String insert(@ModelAttribute("pd") Product pd, ModelMap model) {
 
         try {
-            System.out.println(acc.toString());
-            dao.insert(acc);
+            dao.insert(pd);
             return initiate(model);
         } catch (Exception ex) {
-            model.addAttribute("errors", "Username đã tồn tại");
+            model.addAttribute("loi", "Products đã tồn tại");
             return initiate(model);
         }
 
     }
 
     //4. find
-    @RequestMapping(params = "findAccount", method = RequestMethod.POST)
-    public String find(@ModelAttribute("username1") String username, ModelMap model) {
+    @RequestMapping(params = "findProducts", method = RequestMethod.POST)
+    public String find(@ModelAttribute("username1") String id, ModelMap model) {
 
-        model.addAttribute("accs", dao.getByName(username));
+        model.addAttribute("accs", dao.getById(id));
 
         return "index";
     }
@@ -59,9 +59,9 @@ public class Account_controller {
      * GET|POST: crud.html?delete
      */
     //5. delete
-    @RequestMapping(value = "index", params = "deleteAccount")
-    public String delete(@RequestParam("username") String username, ModelMap model) {
-        dao.delete(username);
+    @RequestMapping(value = "index", params = "deleteProducts")
+    public String delete(@RequestParam("id") String id, ModelMap model) {
+        dao.delete(id);
         return initiate(model);
     }
 
@@ -69,9 +69,9 @@ public class Account_controller {
      * GET: crud.html?edit
      */
     //6. edit
-    @RequestMapping(params = "editAccount", method = RequestMethod.GET)
+    @RequestMapping(params = "editProducts", method = RequestMethod.GET)
     public String edit(@RequestParam("username") String username, ModelMap model) {
-        Account f = dao.getByUsername(username);
+        Product f = dao.getByUsername(username);
         model.addAttribute("acc", f);
         model.addAttribute("accs", dao.getAll());
         return "index";
@@ -81,10 +81,10 @@ public class Account_controller {
      * POST: crud.html?update
      */
     //7. update
-    @RequestMapping(value = "index", params = "updateAccount", method = RequestMethod.POST)
-    public String update(ModelMap model, Account acc) {
-        System.out.println(acc.toString());
-        dao.update(acc);
+    @RequestMapping(value = "index", params = "updateProducts", method = RequestMethod.POST)
+    public String update(ModelMap model, Product pd) {
+        System.out.println(pd.toString());
+        dao.update(pd);
         return initiate(model);
     }
 }

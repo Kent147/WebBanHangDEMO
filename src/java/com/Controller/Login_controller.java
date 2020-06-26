@@ -14,17 +14,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 /**
  *
  * @author root
  */
 @Controller
 public class Login_controller {
-    
+
     @Autowired
     public AccountDAO dao;
-    
+
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(ModelMap model) {
         model.addAttribute("user", new Account());
@@ -39,6 +38,7 @@ public class Login_controller {
             //2. Sau khi có tồn tài khoản acc của username...kiểm tra có đúng password không
             if (acc.getPassword().equals(user.getPassword())) {
                 //3. Nếu đúng mật khẩu thì chuyển qua trang index
+                model.addAttribute("users", user.getUsername());
                 return "index";
             } else {
                 //4. Nếu sai password thì thông báo lỗi
@@ -46,7 +46,7 @@ public class Login_controller {
                 return "login";
             }
         } catch (Exception e) {
-            model.addAttribute("loi", "username không tồn tại.");
+            model.addAttribute("loi", "Tài khoản không tồn tại.");
         }
         return "login";
     }

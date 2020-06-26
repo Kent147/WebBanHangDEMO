@@ -49,11 +49,11 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"><span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="login.htm">Đăng nhập</a></li>
-                                        <li><a href="">Quên mật khẩu</a></li>
-                                        <li><a href="">Đăng ký thành viên</a></li>
+                                        <li><a href="password.htm">Quên mật khẩu</a></li>
+                                        <li><a href="register.htm">Đăng ký thành viên</a></li>
                                         <li class="divider"></li>
                                         <li><a href="">Đăng xuất</a></li>
-                                        <li><a href="">Đổi mật khẩu</a></li>
+                                        <li><a href="password.htm">Đổi mật khẩu</a></li>
                                         <li><a href="info.htm">Cập nhật hồ sơ</a></li>
                                         <li class="divider"></li>
                                         <li><a href="">Đơn hàng</a></li>
@@ -86,7 +86,6 @@
 
                 <article class="col-sm-9">
                     <!--Nội dung trang web-->
-                    <c:forEach var="a" items="${user_details}">
                         <form class="form-group" action="info.htm" modelAttribute="user" method="POST">
                             <div class="panel panel-default">
                                 <label for="upload-avatar" style="cursor: pointer; position: absolute; height: 100%;"> 
@@ -101,7 +100,7 @@
                                 <input type="file" name="user_img" id="upload-avatar" style="opacity: 0; position: absolute; z-index: -1;"/>
                             </div>
                             <span class="text-center" style="position: absolute; color: black; left: 180px; top: 80px; font-size: 40px">
-                                ${username} username
+                                <c:out value="${users}"/> username
                             </span>
                             <br>
                             <span class="text-center" style="position: absolute; color: #78281F; left: 180px; top: 125px; font-size: 20px">
@@ -127,8 +126,6 @@
                                 </div>
                             </div>      
                         </form>
-                    </c:forEach>
-
                 </article>
 
                 <aside class="col-sm-3 ">

@@ -6,6 +6,7 @@
 package com.Controller;
 
 import com.DAO.AccountDAO;
+import com.DAO.ProductDAO;
 import com.DAO.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,16 +26,29 @@ public class Directional {
     public AccountDAO dao;
     @Autowired
     public UserDAO dao1;
+    @Autowired
+    public ProductDAO dao2;
 
     @RequestMapping("index")
     public String index(ModelMap model) {
-        model.addAttribute("users", dao.getAll());
+        model.addAttribute("products", dao2.getAll());
         return "index";
     }
 
     @RequestMapping("info")
     public String info(ModelMap model) {
-        model.addAttribute("user_details", dao1.getAll());
+        model.addAttribute("users", dao.getUsername("admin"));
         return "info";
+    }
+    
+    @RequestMapping("register")
+    public String register(ModelMap model) {
+        return "register";
+    }
+    
+    @RequestMapping("password")
+    public String repass(ModelMap model) {
+        
+        return "password";
     }
 }

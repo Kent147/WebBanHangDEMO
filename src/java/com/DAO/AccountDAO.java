@@ -28,6 +28,11 @@ public class AccountDAO {
         String sql = "SELECT * FROM users WHERE Username=?";
         return jdbc.queryForObject(sql, getRowMapper(), Username);
     }
+    
+    public Account getUsername(String Username){
+        String sql = "SELECT username FROM users WHERE Username=?";
+        return jdbc.queryForObject(sql, getRowMapper(), Username);
+    }
 
     public List<Account> getAll() {
         String sql = "SELECT * FROM users";
