@@ -91,7 +91,10 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default text-center">
                                     <div class="panel-body"><img style="height: 150px; max-width:95%;" src="images/products/${pd.img}"></div>
-                                    <div class="panel-heading"><p>${pd.name_pd}<p><p>Giá : ${pd.cost_pd} VND<p> <br> <a href="?deleteProducts&id=${pd.id_pd}" class="button"> Delete</a></div>
+                                    <div class="panel-heading"><p>${pd.name_pd}<p> ${pd.id_pd} <p>Giá : ${pd.cost_pd} VND<p> <br> 
+                                            <a href="?deleteProducts&id=${pd.id_pd}" class="btn btn-danger"> Delete</a> 
+                                            <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Update</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -171,6 +174,41 @@
                     <p>Made By Kent &copy; 2020. All rights reserved.</p>
                 </div>
             </footer>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group" action="index.htm" modelAttribute="pd" method="POST">
+                                <div class="form-group">
+                                    <input class="form-control" type="tel" name="id_pd" placeholder="Id">
+                                </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name_pd" placeholder="Name Products">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="cost_pd" placeholder="Cost Products">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="info" placeholder="Info Products">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="file" name="img">
+                            </div>
+                            ${loi}
+                            <div class="container-login100-form-btn">
+                                <input type="submit" name="updateProducts" value="Update" class="btn btn-info" id="color" style="width: 100%"/>
+                            </div>     
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

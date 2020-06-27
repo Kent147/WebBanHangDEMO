@@ -70,10 +70,10 @@ public class Product_controller {
      */
     //6. edit
     @RequestMapping(params = "editProducts", method = RequestMethod.GET)
-    public String edit(@RequestParam("username") String username, ModelMap model) {
-        Product f = dao.getByUsername(username);
-        model.addAttribute("acc", f);
-        model.addAttribute("accs", dao.getAll());
+    public String edit(@RequestParam("pd") String id, ModelMap model) {
+        Product f = (Product) dao.getById(id);
+        model.addAttribute("product", f);
+        model.addAttribute("products", dao.getAll());
         return "index";
     }
 
@@ -82,9 +82,14 @@ public class Product_controller {
      */
     //7. update
     @RequestMapping(value = "index", params = "updateProducts", method = RequestMethod.POST)
-    public String update(ModelMap model, Product pd) {
-        System.out.println(pd.toString());
-        dao.update(pd);
-        return initiate(model);
+    public String update(ModelMap model,@ModelAttribute("pd") Product pd) {
+        try {
+            System.out.println(pd.toString());
+            dao.update(pd);
+            return initiate(model);
+        } catch (Exception e) {
+            System.out.println("lỗi");
+            return initiate(model);
+        }
     }
 }

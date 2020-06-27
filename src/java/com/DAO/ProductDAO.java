@@ -49,10 +49,10 @@ public class ProductDAO {
     }
 
     public void update(Product pd) {
-        String sql = "update products set name_pd=?, cost_pd=?, img=?, info=? where id_pd like ?";
-        Object[] param = {pd.getName_pd(), pd.getCost_pd(), pd.getImg(), pd.getInfo()};
-        int[] types = {Types.NVARCHAR, Types.NVARCHAR, Types.NVARCHAR, Types.NVARCHAR};
-        int i = jdbc.update(sql, param, types);
+        String sql = "UPDATE products SET name_pd=?, cost_pd=?, img=?, info=? where id_pd= ?";
+        Object[] param = {pd.getName_pd(), pd.getCost_pd(), pd.getImg(), pd.getInfo(), pd.getId_pd()};
+        //int[] types = {Types.NVARCHAR, Types.NVARCHAR, Types.NVARCHAR, Types.NVARCHAR};
+        int i = jdbc.update(sql, param);//, types);
         System.out.println("Update Row: " + i);
     }
 
@@ -62,7 +62,7 @@ public class ProductDAO {
     }
 
     public List<Product> getById(String id) {
-        String sql = "SELECT * FROM products WHERE id_pd LIKE ?";
+        String sql = "SELECT * FROM products WHERE id_pd= ?";
         return jdbc.query(sql, getRowMapper(), "%" + id + "%");
     }
 }
